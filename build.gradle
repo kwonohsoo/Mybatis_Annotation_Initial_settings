@@ -1,0 +1,65 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.0'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+
+	// lombok
+	annotationProcessor 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
+	implementation 'org.projectlombok:lombok:1.18.18'
+
+	// Security 6.2.0
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	testImplementation 'org.springframework.security:spring-security-test'
+
+	// JWT (JWT version of Spring Boot 3.x)
+//	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+//	implementation 'io.jsonwebtoken:jjwt-impl:0.11.5'
+//	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+	// Mybatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
+
+	// MariaDB 3.2.0
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+	// Swagger 3
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.3.0")
+
+	// PageHelper (페이징 처리시 필요)
+	implementation 'com.github.pagehelper:pagehelper-spring-boot-starter:2.1.0'
+}
+
+tasks.named ('test') {
+	useJUnitPlatform()
+}
+
+
